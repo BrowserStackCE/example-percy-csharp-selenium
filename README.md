@@ -4,7 +4,12 @@ This example app is an HTTP server that serves a fork of the [TodoMVC](https://g
 (forked at commit
 [c78ae12a1834a11da6236c64a0c0fb06b20b7c51](https://github.com/tastejs/todomvc/tree/c78ae12a1834a11da6236c64a0c0fb06b20b7c51)).
 
-The project requires .NET Core 3.1 or higher.
+The project requires .NET Core 3.1 or higher. 
+
+On Mac OS, you can use Homebrew:
+```bash
+$ brew cask install dotnet
+```
 
 The Selenium tests use ChromeDriver, which you need to install separately for your system.
 
