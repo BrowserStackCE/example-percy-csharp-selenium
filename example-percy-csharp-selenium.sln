@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "example-percy-csharp-selenium", "example-percy-csharp-selenium\example-percy-csharp-selenium.csproj", "{89BDC615-4AFD-45B6-B15F-FE711745BA77}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89BDC615-4AFD-45B6-B15F-FE711745BA77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89BDC615-4AFD-45B6-B15F-FE711745BA77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89BDC615-4AFD-45B6-B15F-FE711745BA77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89BDC615-4AFD-45B6-B15F-FE711745BA77}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
