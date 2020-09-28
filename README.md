@@ -32,7 +32,8 @@ https://github.com/SeleniumHQ/selenium/wiki/ChromeDriver
 Option 1: In case you'd like to use node to build the code and trigger the test, simply run the below command. Please ensure to supply a valid PERCY_TOKEN with the command.
 
 ```bash
-PERCY_TOKEN=<YOUR_PROJECT_TOKEN> npm run test
+$ npm install
+$ PERCY_TOKEN=<YOUR_PROJECT_TOKEN> npm run test
 ```
 
 Option 2: To separately compile and build a .dll file containing our app:
@@ -42,5 +43,6 @@ $ dotnet build
 
 Then, to run the tests and create the build on Percy:
 ```bash
-$ PERCY_TOKEN=<YOUR_PROJECT_TOKEN> percy exec -- dotnet example-percy-csharp-selenium/bin/Debug/*/example-percy-csharp-selenium.dll
+$ npm install
+$ PERCY_TOKEN=<YOUR_PROJECT_TOKEN> node_modules/@percy/agent/bin/run exec -- dotnet example-percy-csharp-selenium/bin/Debug/*/example-percy-csharp-selenium.dll
 ```
