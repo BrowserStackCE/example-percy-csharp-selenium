@@ -36,7 +36,7 @@ $ npm install
 $ PERCY_TOKEN=<YOUR_PROJECT_TOKEN> npm run test
 ```
 
-Option 2: In case you have already installed @percy/agent npm module globally.
+Option 2: In case you have already installed @percy/agent node module globally on your machine.
 
 To compile and build a .dll file containing our app:
 ```bash
@@ -45,6 +45,5 @@ $ dotnet build
 
 Then, to run the tests and create the build on Percy:
 ```bash
-$ npm install
 $ PERCY_TOKEN=<YOUR_PROJECT_TOKEN> percy exec -- dotnet example-percy-csharp-selenium/bin/Debug/*/example-percy-csharp-selenium.dll
 ```
