@@ -84,7 +84,7 @@ namespace example_percy_csharp_selenium
             Assert.AreEqual("0 items left", todoCountEl.Text);
 
             // Take a Percy snapshot specifying a minimum height.
-            percy.Snapshot("Checked off todo", null, 2000);
+            percy.Snapshot("Checked off todo", null, 1200, false, ".clear-completed { visibility: hidden; }");
 
         }
 
