@@ -36,7 +36,7 @@ $ npm install
 $ PERCY_TOKEN=<YOUR_PROJECT_TOKEN> npm run test
 ```
 
-Option 2: In case you have already installed @percy/agent node module globally on your machine.
+Option 2: In case you have already installed @percy/cli node module globally on your machine.
 
 To compile and build a .dll file containing our app:
 ```bash
