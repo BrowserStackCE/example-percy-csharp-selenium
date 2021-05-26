@@ -1,9 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "test": "dotnet build & node_modules/@percy/agent/bin/run exec -- dotnet example-percy-csharp-selenium/bin/Debug/*/example-percy-csharp-selenium.dll"
+    "test": "dotnet build & node_modules/@percy/cli/bin/run exec -- dotnet example-percy-csharp-selenium/bin/Debug/*/example-percy-csharp-selenium.dll"
   },
   "devDependencies": {
-    "@percy/agent": "^0.28.6"
+    "@percy/cli": "^1.0.0-beta.51"
   }
 }
