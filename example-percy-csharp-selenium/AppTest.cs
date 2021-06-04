@@ -87,7 +87,8 @@ namespace example_percy_csharp_selenium
             _percy.Snapshot("Checked off todo", new Dictionary<string, object> {
                 { "minHeight", 1200 },
                 { "enableJavaScript",  false },
-                { "percyCSS", ".clear-completed { visibility: hidden; }");
+                { "percyCSS", ".clear-completed { visibility: hidden; }" }
+                });
 
         }
 
