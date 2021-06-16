@@ -15,76 +15,80 @@ namespace example_percy_csharp_selenium
     public class AppTest
     {
         private static readonly String TEST_URL = "http://localhost:8000";
-        private static IWebDriver driver;
-        private static Percy percy;
-        private static TestServer server;
+        private static IWebDriver _driver;
+        private static Percy _percy;
+        private static TestServer _server;
 
         public void StartAppAndOpenBrowser()
         {
-            server = new TestServer();
-            server.StartTestServer();
+            _server = new TestServer();
+            _server.StartTestServer();
             // Create a headless Chrome browser.
             ChromeOptions options = new ChromeOptions();
             options.AddArguments("--headless");
-            driver = new ChromeDriver(options);
-            percy = new Percy(driver);
+            _driver = new ChromeDriver(options);
+            _percy = new Percy(_driver);
         }
 
-        public void closeBrowser()
+        public void CloseBrowser()
         {
             // Close our test browser.
-            driver.Quit();
-            server.StopTestServer();
+            _driver.Quit();
+            _server.StopTestServer();
         }
 
-        public void loadsHomePage()
+        public void LoadsHomePage()
         {
-            driver.Navigate().GoToUrl(TEST_URL);
-            IWebElement element = driver.FindElement(By.ClassName("todoapp"));
+            _driver.Navigate().GoToUrl(TEST_URL);
+            IWebElement element = _driver.FindElement(By.ClassName("todoapp"));
             Assert.IsNotNull(element);
             // Take a Percy snapshot.
-            percy.Snapshot("Home Page");
+            _percy.Snapshot("Home Page", null);
         }
 
-        public void acceptsANewTodo()
+        public void AcceptsANewTodo()
         {
-            driver.Navigate().GoToUrl(TEST_URL);
+            _driver.Navigate().GoToUrl(TEST_URL);
 
             // We start with zero todos.
-            var todoEls = driver.FindElements(By.CssSelector(".todo-list li"));
+            var todoEls = _driver.FindElements(By.CssSelector(".todo-list li"));
             Assert.AreEqual(0, todoEls.Count);
             // Add a todo in the browser.
-            IWebElement newTodoEl = driver.FindElement(By.ClassName("new-todo"));
+            IWebElement newTodoEl = _driver.FindElement(By.ClassName("new-todo"));
             newTodoEl.SendKeys("A new fancy todo!");
             newTodoEl.SendKeys(Keys.Return);
 
             // Now we should have 1 todo.
-            todoEls = driver.FindElements(By.CssSelector(".todo-list li"));
+            todoEls = _driver.FindElements(By.CssSelector(".todo-list li"));
             Assert.AreEqual(1, todoEls.Count);
             // Take a Percy snapshot specifying browser widths.
-            percy.Snapshot("One todo", new List<int> { 768, 992, 1200 });
-            driver.FindElement(By.ClassName("toggle")).Click();
-            driver.FindElement(By.ClassName("clear-completed")).Click();
+            _percy.Snapshot("One todo", new Dictionary<string, object> { { "widths", new List<int> { 768, 992, 1200 } } });
+            _driver.FindElement(By.ClassName("toggle")).Click();
+            _driver.FindElement(By.ClassName("clear-completed")).Click();
         }
 
-        public void letsYouCheckOffATodo()
+        public void LetsYouCheckOffATodo()
         {
-            driver.Navigate().GoToUrl(TEST_URL);
+            _driver.Navigate().GoToUrl(TEST_URL);
 
-            IWebElement newTodoEl = driver.FindElement(By.ClassName("new-todo"));
+            IWebElement newTodoEl = _driver.FindElement(By.ClassName("new-todo"));
             newTodoEl.SendKeys("A new todo to check off");
             newTodoEl.SendKeys(Keys.Return);
 
-            IWebElement todoCountEl = driver.FindElement(By.ClassName("todo-count"));
+            IWebElement todoCountEl = _driver.FindElement(By.ClassName("todo-count"));
             Assert.AreEqual("1 item left", todoCountEl.Text);
 
-            driver.FindElement(By.ClassName("toggle")).Click();
+            _driver.FindElement(By.ClassName("toggle")).Click();
 
-            todoCountEl = driver.FindElement(By.ClassName("todo-count"));
+            todoCountEl = _driver.FindElement(By.ClassName("todo-count"));
             Assert.AreEqual("0 items left", todoCountEl.Text);
 
             // Take a Percy snapshot specifying a minimum height.
-            percy.Snapshot("Checked off todo", null, 1200, false, ".clear-completed { visibility: hidden; }");
+            _percy.Snapshot("Checked off todo", new Dictionary<string, object> {
+                { "minHeight", 1200 },
+                { "enableJavaScript",  false },
+                { "percyCSS", ".clear-completed { visibility: hidden; }" }
+                });
 
         }
 

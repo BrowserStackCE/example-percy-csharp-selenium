@@ -9,9 +9,6 @@ using System.IO;
 using System.Threading;
 namespace example_percy_csharp_selenium
 {
-
-
-
     class SimpleHTTPServer
     {
         private readonly string[] _indexFiles = {
