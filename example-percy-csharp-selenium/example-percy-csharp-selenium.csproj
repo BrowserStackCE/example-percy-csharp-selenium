@@ -13,10 +13,13 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
+  <PropertyGroup>
+    <RestoreSources>$(RestoreSources);../percy-sdk-nuget;https://api.nuget.org/v3/index.json</RestoreSources>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
-    <PackageReference Include="percy-csharp-selenium" Version="1.0.0-alpha" />
+    <PackageReference Include="percy-csharp-selenium" Version="1.0.1-alpha" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="testapp\README.md">
