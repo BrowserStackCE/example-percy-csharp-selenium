@@ -27,7 +27,7 @@ namespace example_percy_csharp_selenium
             ChromeOptions options = new ChromeOptions();
             options.AddArguments("--headless");
             _driver = new ChromeDriver(options);
-            _percy = new Percy(_driver);
+            _percy = new Percy();
         }
 
         public void CloseBrowser()
@@ -43,7 +43,7 @@ namespace example_percy_csharp_selenium
             IWebElement element = _driver.FindElement(By.ClassName("todoapp"));
             Assert.IsNotNull(element);
             // Take a Percy snapshot.
-            _percy.Snapshot("Home Page", null);
+            _percy.Snapshot(_driver,"Home Page", null);
         }
 
         public void AcceptsANewTodo()
@@ -62,7 +62,7 @@ namespace example_percy_csharp_selenium
             todoEls = _driver.FindElements(By.CssSelector(".todo-list li"));
             Assert.AreEqual(1, todoEls.Count);
             // Take a Percy snapshot specifying browser widths.
-            _percy.Snapshot("One todo", new Dictionary<string, object> { { "widths", new List<int> { 768, 992, 1200 } } });
+            _percy.Snapshot(_driver,"One todo", new Dictionary<string, object> { { "widths", new List<int> { 768, 992, 1200 } } });
             _driver.FindElement(By.ClassName("toggle")).Click();
             _driver.FindElement(By.ClassName("clear-completed")).Click();
         }
@@ -84,7 +84,7 @@ namespace example_percy_csharp_selenium
             Assert.AreEqual("0 items left", todoCountEl.Text);
 
             // Take a Percy snapshot specifying a minimum height.
-            _percy.Snapshot("Checked off todo", new Dictionary<string, object> {
+            _percy.Snapshot(_driver,"Checked off todo", new Dictionary<string, object> {
                 { "minHeight", 1200 },
                 { "enableJavaScript",  false },
                 { "percyCSS", ".clear-completed { visibility: hidden; }" }

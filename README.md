@@ -8,14 +8,14 @@ The project requires .NET Core 3.1 or higher.
 
 On Mac OS, you can use Homebrew:
 ```bash
-$ brew cask install dotnet
+$ brew install --cask dotnet
 ```
 
 The Selenium tests use ChromeDriver, which you need to install separately for your system.
 
 On Mac OS, you can use Homebrew:
 ```bash
-$ brew tap homebrew/cask && brew cask install chromedriver
+$ brew tap homebrew/cask && brew install --cask chromedriver
 ```
 
 On Windows, you can use Chocolatey:
